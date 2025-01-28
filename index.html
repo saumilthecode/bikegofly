@@ -1,0 +1,116 @@
+<style>
+    body {
+        background: #121212; 
+        color: #E0E0E0; 
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: flex-start; 
+        min-height: 100vh; 
+        padding-top: 100px;
+        box-sizing: border-box;
+    }
+    h1 {
+        margin: 0 0 20px;
+    }
+    .tab {
+        display: none;
+    }
+    .tab-button {
+        cursor: pointer;
+        padding: 12px 24px; 
+        background: #424242; 
+        color: #E0E0E0; 
+        border: none;
+        margin: 5px;
+        border-radius: 5px;
+        transition: background 0.3s, transform 0.2s; 
+    }
+    .tab-button.active {
+        background: #E0E0E0; 
+        color: black;
+    }
+    .tab-button:hover {
+        background: #616161; 
+        transform: scale(1.05); 
+    }
+    #picture-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center; 
+        margin: 20px 0; 
+        max-width: 800px; 
+    }
+    #picture-gallery .image-container {
+        max-width: 30%;
+        margin: 10px;
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+    }
+    #picture-gallery img {
+        max-width: 100%; 
+        margin-bottom: 5px; 
+    }
+    @media (max-width: 768px) {
+        #picture-gallery .image-container {
+            max-width: 100%;
+        }
+    }
+</style>
+<h1>pictures</h1>
+<div>
+    <button class="tab-button active" onclick="showTab(event, 'busStops')">bus stops</button>
+    <button class="tab-button" onclick="showTab(event, 'stickers')">stickers</button>
+</div>
+<div id="picture-gallery">
+    <div id="busStops" class="tab" style="display: block;">
+        <div class="image-container">
+            <img src="busstop.jpeg" alt="bus stop picture">
+            <span>bus stop picture that i uploaded</span>
+        </div>
+        <div class="image-container">
+            <img src="busstopgmatps.jpeg" alt="google maps view">
+            <span>bus stop as seen on google maps</span>
+        </div>
+    </div>
+    <div id="stickers" class="tab">
+        <div class="image-container">
+            <img src="oh.png" alt="open house">
+            <span>open house</span>
+        </div>
+        <div class="image-container">
+            <img src="geekcamp1.JPEG" alt="geekcamp stickers 1">
+            <span><a href="https://geekcamp.sg" style="color: #E0E0E0; text-decoration: underline;">geekcamp stickers 1</a></span>
+        </div>
+        <div class="image-container">
+            <img src="geekcamp2.JPG" alt="geekcamp stickers 2">
+            <span><a href="https://geekcamp.sg" style="color: #E0E0E0; text-decoration: underline;">geekcamp stickers 2</a></span>
+        </div>
+        <div class="image-container">
+            <img src="iosconf2.jpeg" alt="ios conf sticker 1">
+            <span><a href="https://www.iosconf.sg/" style="color: #E0E0E0; text-decoration: underline;">ios conf sticker 1</a></span>
+        </div>
+        <div class="image-container">
+            <img src="iosconf1.png" alt="ios conf sticker 2">
+            <span><a href="https://www.iosconf.sg/" style="color: #E0E0E0; text-decoration: underline;">ios conf sticker 2</a></span>
+        </div>
+        <div class="image-container">
+            <img src="bbcs.png" alt="bbcs stickers">
+            <span><a href="https://old.buildingblocs.sg/2024/events/december/" style="color: #E0E0E0; text-decoration: underline;">bbcs stickers</a></span>
+        </div>
+    </div>
+</div>
+<script>
+    function showTab(event, tabId) {
+        document.querySelectorAll('.tab').forEach(tab => tab.style.display = 'none');
+        document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active'));
+        document.getElementById(tabId).style.display = 'block';
+        event.target.classList.add('active');
+        document.getElementById(tabId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+</script>
